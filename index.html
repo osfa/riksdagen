@@ -1,11 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-5458384-7"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-5458384-7');
+	</script>
 
 	<meta charset="utf-8">
+
 	<title>Riksdagen.run</title>
-	<meta name="description" content="">
-	<meta name="author" content="">
+
+	<meta name="description" content="riksdagen, dcgan, AI, neural network, politics, generative">
+	<meta name="author" content="jacob broms engblom">
+
+	<meta name="twitter:title" content="Riksdagen.run">
+	<meta name="twitter:description" content="Generera en ny riksdag.">
+	<meta name="twitter:image" content="https://riksdagen.run/images/cover.jpg">
+	<meta name="twitter:card" content="summary_large_image">
+
+	<meta property="og:title" content="Riksdagen.run">
+	<meta property="og:description" content="Generera en ny riksdag.">
+
+	<meta property="og:image" content="https://riksdagen.run/images/cover.jpg">
+	<meta property="og:video" content="https://riksdagen.run/images/cover.mp4">
+	<meta property="og:video:secure_url" content="https://riksdagen.run/images/cover.mp4">
+	<meta property="og:video:type" content="video/mp4">
+	<meta property="og:video:width" content="384">
+	<meta property="og:video:height" content="512">
+
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -22,17 +49,37 @@
 </head>
 
 <body>
-	<div class="container">
 
-		<header class="masthead mb-auto">
-			<div class="inner">
-				<img src="images/riksdagen-logo.svg"/>
-			</div>
-		</header>
+	<header class="about fixed-top">
+		<div class="container py-3 pt-4">
+			<p>This page consists of randomized pairs of sample outputs from two neural networks ("AIs") trained on the images and names of the 349 members of the Swedish Riksdag.</p>
+			<p>Click "Ny Riksdag" to look at a new batch.</p>
+			<p>Project by <a href="http://www.likeneveralways.com/log/">Jacob Broms Engblom</a></p>
+		</div>
+	</header>
+
+	<div class="topper fixed-top">
+		<div class="container">
+			<header>
+				<div class="row flex-nowrap justify-content-between align-items-center">
+					<div class="col-4 pt-1">
+						<img src="images/riksdagen-logo.svg"/>
+					</div>
+					<div class="col-4 d-flex justify-content-end align-items-center">
+						<a class="about-btn mr-4" href="#">About</a>
+						<a class="btn btn-lg d-none d-md-block btn-primary btn-riksdag" href="#">Ny Riksdag</a>
+						<a class="btn d-md-none btn-primary btn-riksdag" href="#">Ny Riksdag</a>
+					</div>
+				</div>
+			</header>
+		</div>
+	</div>
+
+	<div class="container">
 
 		<div id="main-container" class="row">
 
-			<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 hidden template">
+			<div class="member-col col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 hidden template">
 				<div class="card mb-4 box-shadow">
 					<img class="card-img-top" src="/members/test.jpg"/>
 					<div class="card-body">

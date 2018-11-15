@@ -1,44 +1,72 @@
 
+var selectedNames = [];
+var selectedImgs = [];
 
 $(document).ready(function() {
 
 
     Number.prototype.pad = function(size) {
-    var s = String(this);
-    while (s.length < (size || 2)) {s = "0" + s;}
-    return s;
+        var s = String(this);
+        while (s.length < (size || 2)) {s = "0" + s;}
+        return s;
+    }
+
+    function getNames(){
+        var names = []
+        for (i = 0; i < 349; i++) { 
+            var name = _.sample(allNames);
+            while (_.includes(names, name)) {
+                name = _.sample(allNames);
+            }
+            names.push(name);
+        }
+        return names;
+    }
+
+    function getNumbers(){
+        var nums = []
+        for (i = 0; i < 349; i++) { 
+            var imgNumber = _.random(0,1079);
+            while (_.includes(nums, imgNumber)) {
+                imgNumber = _.random(0,1079);
+            }
+            nums.push(imgNumber);
+        }
+        return nums;
     }
 
     var $container = $('#main-container');
     var $template = $('.template').clone().removeClass('hidden template');
     $('.template').remove();
-    var existingNames = [];
-    var existingImgs = [];
 
-    for (i = 0; i < 349; i++) { 
-        var name = _.sample(names);
-        while (_.includes(existingNames, name)) {
-            name = _.sample(names);
-        }
+    selectedNames = _.sortBy(getNames());
+    selectedImgs = getNumbers();
 
-        var imgNumber = _.random(0,1079);
-        while (_.includes(existingImgs, imgNumber)) {
-            imgNumber = _.random(0,1079);
-        }
-
+    for (i = 0; i < 349; i++) {
         var $inst = $template.clone();
-        $inst.find('.card-text').text(name);
-        $inst.find('img').attr('src', 'members/members' + imgNumber.pad(5) + '.jpg');
+        $inst.find('.card-text').text(selectedNames[i]);
+        $inst.find('img').attr('src', 'members/members' + selectedImgs[i].pad(5) + '.jpg');
         $('#main-container').append($inst);
-
-        existingNames.push(name);
-        existingImgs.push(imgNumber);
-
     }
+
+    $(".about-btn, .about").click(function() {
+        $('.about, .topper').toggleClass('active');
+    });
+
+
+    $(".btn-riksdag").click(function(e) {
+        e.preventDefault();
+        selectedNames = _.sortBy(getNames());
+        selectedImgs = getNumbers();
+        $('.member-col').each(function(index){
+            $(this).find('.card-text').text(selectedNames[index]);
+            $(this).find('img').attr('src', 'members/members' + selectedImgs[index].pad(5) + '.jpg');
+        });
+    });
 
 });
 
-var names = [
+var allNames = [
 "Janil Mormantz (SD)",
 "Markus Wentru (SD)",
 "Anders Westro (S)",
