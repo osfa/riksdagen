@@ -49,11 +49,6 @@ $(document).ready(function() {
         $('#main-container').append($inst);
     }
 
-    $(".about-btn, .about").click(function() {
-        $('.about, .topper').toggleClass('active');
-    });
-
-
     $(".btn-riksdag").click(function(e) {
         e.preventDefault();
         selectedNames = _.sortBy(getNames());
